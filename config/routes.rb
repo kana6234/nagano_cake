@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   }
   namespace :public do
     root 'homes#top'
-    get '/about' => 'homes#about'
-  end
-
-  namespace :public do
+    get 'about' => 'homes#about'
     resources :items, only:[:index, :show]
+    resources :customers, only:[:show, :edit, :update]
+    get 'custmers/unsubscribe' => 'customers#unsubscribe'
+    patch 'custmers/withdraw' => 'customers#withdraw'
+    resources :cart_itrms, only:[:index, :create, :update, :destroy]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
