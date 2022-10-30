@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     get 'top' => 'homes#top'
+    resources :adresses, only:[:new, :index, :create, :show, :edit, :update]
+    resources :adresses, only:[:index, :create, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
