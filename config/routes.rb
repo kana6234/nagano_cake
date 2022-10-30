@@ -22,5 +22,8 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
     resources :adresses, only:[:index, :create, :edit, :update, :destroy]
   end
+  namespace :public do
+    get 'top' => 'homes#top'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
