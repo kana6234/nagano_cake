@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     patch 'custmers/withdraw' => 'customers#withdraw'
     resources :cart_itrms, only:[:index, :create, :update, :destroy]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :orders, only:[:new, :index, :create, :show]
+    post 'orders/comfirm' => 'orders#comfirm'
+    get 'orders/complete' => 'orders#complete'
+    resources :adresses, only:[:index, :create, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
