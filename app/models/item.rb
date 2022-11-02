@@ -9,4 +9,12 @@ class Item < ApplicationRecord
   validates :genre_id, presence: true
   validates :price, presence: true
   validates :is_active, presence: true
+
+  def get_image(width, height)
+    image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def tax_price
+        (self.price * 1.1).round
+  end
 end
