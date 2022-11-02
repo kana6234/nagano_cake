@@ -4,10 +4,10 @@
     <%= form_with model: @item, url: admin_items_path do |f| %>
       <tr>
         <td>
-          <label for="image">商品画像</label>
+          <label for="item_image">商品画像</label>
         </td>
         <td>
-          <%= f.file_field :image, accept: "image/*", id: "image" %>
+          <%= f.file_field :image, accept: "image/*", id: "item_image" %>
         </td>
       </tr>
       <tr>
