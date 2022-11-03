@@ -28,7 +28,7 @@
           <%= item.genre.name %>
         </td>
         <td>
-          <%= item.is_active %>
+          <%= item.is_active ? "販売中" : "販売停止中" %>
         </td>
       </tr>
     <% end %>
