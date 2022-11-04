@@ -1,13 +1,24 @@
 <h1>注文履歴詳細</h1>
+<% if @order.errors.any? %>
+  <h3><%= @order.errors.count %> errors prohibited this obj from being saved:</h3>
+<% end %>
 <div class="row">
   <div class="col">
     <div class="row">
       <div class="col">購入者</div>
-      <div class="col"><%= @order.name %></div>
+      <div class="col"><%= @order.customer.last_name+@order.customer.first_name %></div>
     </div>
     <div class="row">
       <div class="col">注文日</div>
       <div class="col"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+    </div>
+    <div class="row">
+      <div class="col">配送先</div>
+      <div class="col">
+        〒<%= @order.postal_code %>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </div>
     </div>
     <div class="row">
       <div class="col">支払い方法</div>
@@ -16,8 +27,8 @@
     <div class="row">
       <div class="col">注文ステータス</div>
       <div class="col">
-        <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
-          <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}  %>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
+          <%= f.select :status, Order.statuses_i18n.invert %>
           <%= f.submit "更新", class: "btn btn-success" %>
         <% end %>
       </div>
@@ -43,12 +54,18 @@
               <%= order_item.item.name %>
             </td>
             <td>
-              <%= order_item.item.with_tax_price %>
+              <%= order_item.price.to_s(:delimited) %>
             </td>
             <td>
-              <%= order_item.amont %>
+              <%= order_item.amount.to_s(:delimited) %>
             </td>
-            <td></td>
+            <td><%= order_item.subtotal.to_s(:delimited) %></td>
+            <td>
+              <%= form_with model: order_item, url: admin_order_item_path(order_item.id), method: :patch do |f| %>
+                <%= f.select :making_status, OrderItem.making_statuses_i18n.invert %>
+                <%= f.submit "更新", class: "btn btn-success" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -57,15 +74,17 @@
   <div class="col">
     <div class="row">
       <div class="col">商品合計</div>
-      <div class="col">円</div>
+      <div class="col">
+        <%= @total.round.to_s(:delimited)%>円
+      </div>
     </div>
     <div class="row">
       <div class="col">送料</div>
-      <div class="col"><%= @order.postage %>円</div>
+      <div class="col"><%= @order.postage.to_s(:delimited) %>円</div>
     </div>
     <div class="row">
       <div class="col">請求金額合計</div>
-      <div class="col"><%= @order.total_payment %>円</div>
+      <div class="col"><%= @order.total_payment.to_s(:delimited) %>円</div>
     </div>
   </div>
 </div>
