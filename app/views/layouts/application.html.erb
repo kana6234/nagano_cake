@@ -21,16 +21,16 @@
             <ul class="navbar-nav">
               <% if admin_signed_in? %>
                 <li>
-                  <%= link_to '商品一覧', admin_items_path, class: "nav-link text-dark px-3 mr-5 rounded border" %>
+                  <%= link_to '商品一覧', admin_items_path, class: "nav-link text-dark px-3 mr-3 rounded border" %>
                 </li>
                 <li>
-                  <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-dark px-3 rmr-5 ounded border" %>
+                  <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-dark px-3 mr-3 ounded border" %>
                 </li>
                 <li>
-                  <%= link_to '注文履歴一覧', admin_top_path, class: "nav-link text-dark px-3 mr-5 rounded border" %>
+                  <%= link_to '注文履歴一覧', admin_top_path, class: "nav-link text-dark px-3 mr-3 rounded border" %>
                 </li>
                 <li>
-                  <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark px-3 mr-5 rounded border" %>
+                  <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-dark px-3 mr-3 rounded border" %>
                 </li>
                 <li>
                   <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-dark px-3 rounded border" %>
