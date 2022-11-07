@@ -1,6 +1,7 @@
-<h1>会員一覧</h1>
-<table>
-  <thead>
+<div class="container">
+  <h5 class="d-inline-block bg-light my-4 px-3">会員一覧</h5>
+<table class="table border-bottom">
+  <thead class="thead-light">
     <tr>
       <th>会員ID</th>
       <th>氏名</th>
@@ -15,16 +16,17 @@
           <%= customer.id %>
         </td>
         <td>
-          <%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id) %>
+          <u><%= link_to customer.last_name+customer.first_name, admin_customer_path(customer.id), class: "text-dark" %></u>
         </td>
         <td>
           <%= customer.email %>
         </td>
         <td>
-          <%= customer.is_deleted ? "退会" : "有効" %>
+          <div class="<%= customer.is_deleted ? "text-secondary" : "text-success" %>"><%= customer.is_deleted ? "退会" : "有効" %></div>
         </td>
       </tr>
     <% end %>
     <%= paginate @customers %>
   </tbody>
 </table>
+</div>
