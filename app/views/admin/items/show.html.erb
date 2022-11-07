@@ -1,48 +1,53 @@
-<h1>商品詳細</h1>
-<%= image_tag @item.get_image(300, 300) %>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <p>商品名</p>
-      </td>
-      <td>
-        <%= @item.name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>商品説明</p>
-      </td>
-      <td>
-        <%= @item.introduction %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>ジャンル</p>
-      </td>
-      <td>
-        <%= @item.genre.name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>税込価格<br>(税抜価格)</p>
-      </td>
-      <td>
-        <%= @item.with_tax_price %>(<%= @item.price %>)
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>販売ステータス</p>
-      </td>
-      <td>
-        <%= @item.is_active ? "販売中" : "販売停止中" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
+<div class="container ml-md-4">
+  <h5 class="d-inline-block bg-light my-4 px-3">商品詳細</h5>
+  <div class="row">
+    <div class="col-md-6 col-lg-5">
+      <%= image_tag @item.get_image(300, 300), class: "img-fluid pr-4" %>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-4">
+          <p>商品名</p>
+        </div>
+        <div class="col-8">
+          <%= @item.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>商品説明</p>
+        </div>
+        <div class="col-8">
+          <%= @item.introduction %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>ジャンル</p>
+        </div>
+        <div class="col-8">
+          <%= @item.genre.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>税込価格<br>(税抜価格)</p>
+        </div>
+        <div class="col-8">
+          <%= @item.with_tax_price %>(<%= @item.price %>)
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <p>販売ステータス</p>
+        </div>
+        <div class="col-8">
+          <div class="<%= @item.is_active ? "text-success" : "text-secondary" %>"><%= @item.is_active ? "販売中" : "販売停止中" %></div>
+        </div>
+      </div>
+      <div class="row">
+        <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success col-4 offset-2" %>
+      </div>
+    </div>
+  </div>
+</div>
