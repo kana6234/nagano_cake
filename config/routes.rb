@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :items, only:[:index, :show]
     get 'customers/my_page' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
-    post 'customers/information'=> 'customers#update'
+    patch 'customers/information'=> 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :cart_items, only:[:index, :create, :update, :destroy]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :orders, only:[:new, :index, :create, :show]
     post 'orders/comfirm' => 'orders#comfirm'
     get 'orders/complete' => 'orders#complete'
-    resources :adresses, only:[:index, :create, :edit, :update, :destroy]
+    resources :addresses, only:[:index, :create, :edit, :update, :destroy]
   end
   namespace :admin do
     get 'top' => 'homes#top'
