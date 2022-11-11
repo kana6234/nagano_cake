@@ -1,0 +1,18 @@
+<div class="container">
+  <h5 class="d-inline-block bg-light my-4 px-3">配送先編集</h5>
+  <%= form_with model: @address, url: address_path(@address.id) do |f|%>
+    <div class="form-group row">
+      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-sm-3 col-form-label" %>
+      <%= f.text_field :postal_code, class: "col-sm-4 px-0" %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :address, "住所", class: "col-sm-3 col-form-label" %>
+      <%= f.text_field :address, class: "col-sm-7 px-0" %>
+    </div>
+    <div class="form-group row">
+      <%= f.label :name, "宛名", class: "col-sm-3 col-form-label" %>
+      <%= f.text_field :name, class: "col-sm-4 px-0" %>
+      <%= f.submit "新規登録", class: "btn btn-sm btn-success col-sm-2 offset-sm-3" %>
+    </div>
+  <% end %>
+</div>
