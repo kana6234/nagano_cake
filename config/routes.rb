@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only:[:index, :create, :update, :destroy]
-    resources :orders, only:[:new, :index, :create, :show]
     post 'orders/comfirm' => 'orders#comfirm'
     get 'orders/complete' => 'orders#complete'
+    resources :orders, only:[:new, :index, :create, :show]
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
   end
   namespace :admin do

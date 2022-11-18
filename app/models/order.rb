@@ -4,4 +4,10 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :customer
   validates :status, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :postage, presence: true
+  validates :total_payment, presence: true
+  validates :payment_method, presence: true
 end

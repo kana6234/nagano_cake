@@ -60,7 +60,6 @@
       <%= f.hidden_field :address, :value => @order.address %>
       <%= f.hidden_field :name, :value => @order.name %>
       <%= f.hidden_field :postage, :value => @order.postage %>
-      <%= f.hidden_field :total_payment, :value => @total.round+@order.postage %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
       <%=  f.submit "注文を確定する", class: "btn btn-success px-2" %>
     <% end %>

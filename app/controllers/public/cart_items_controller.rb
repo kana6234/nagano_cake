@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!, only: [:create]
   def index
     @cart_items = current_customer.cart_items
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    total
   end
 
   def create
@@ -23,7 +23,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       @cart_items = current_customer.cart_items
-      @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+      total
       render :index
     end
   end
