@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  before_action :have_cart_item, only: [:new, :create, :comfirm]
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
@@ -61,5 +62,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage)
+  end
+
+  def have_cart_item
+    return if current_customer.cart_items.exists?
+      redirect_to cart_items_path
   end
 end
