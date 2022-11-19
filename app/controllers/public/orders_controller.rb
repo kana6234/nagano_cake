@@ -32,6 +32,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items.all
+    @total = @order_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def comfirm
