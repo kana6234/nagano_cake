@@ -57,7 +57,7 @@
                 <%= order_item.price.to_s(:delimited) %>
               </td>
               <td>
-                <%= order_item.amount.to_s(:delimited) %>
+                <%= order_item.amount %>
               </td>
               <td><%= order_item.subtotal.to_s(:delimited) %></td>
               <td>
@@ -80,7 +80,7 @@
       </div>
       <div class="row">
         <div class="col">送料</div>
-        <div class="col"><%= @order.postage.to_s(:delimited) %>円</div>
+        <div class="col"><%= @order.postage %>円</div>
       </div>
       <div class="row">
         <div class="col">請求金額合計</div>
