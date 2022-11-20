@@ -1,4 +1,4 @@
-class Public::OrdersController < ApplicationController
+class Public::OrdersController < Public::BaseController
   before_action :have_cart_item, only: [:new, :create, :comfirm]
   def new
     @order = Order.new

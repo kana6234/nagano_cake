@@ -1,4 +1,4 @@
-class Admin::ItemsController < ApplicationController
+class Admin::ItemsController < Admin::BaseController
   def new
     @item = Item.new
     @genres = Genre.all
