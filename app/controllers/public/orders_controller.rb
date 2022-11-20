@@ -51,7 +51,7 @@ class Public::OrdersController < Public::BaseController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:select_address].to_i == 3
+    elsif params[:order][:select_address].to_i == 3 && !@order.postal_code.empty? && !@order.address.empty? && !@order.name.empty?
     else
       @order = Order.new
       @customer = Customer.find(current_customer.id)
