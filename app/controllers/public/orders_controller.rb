@@ -1,5 +1,6 @@
 class Public::OrdersController < Public::BaseController
   before_action :have_cart_item, only: [:new, :create, :comfirm]
+  before_action :is_matching_login_user, only: [:show]
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
@@ -70,5 +71,12 @@ class Public::OrdersController < Public::BaseController
   def have_cart_item
     return if current_customer.cart_items.exists?
       redirect_to cart_items_path
+  end
+
+  def is_matching_login_user
+    order = Order.find_by(id: params[:id])
+    if current_customer.id != order.customer_id
+      redirect_to orders_path
+    end
   end
 end

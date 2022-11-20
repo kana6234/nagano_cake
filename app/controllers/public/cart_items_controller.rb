@@ -1,4 +1,5 @@
 class Public::CartItemsController < Public::BaseController
+  before_action :is_matching_login_user, only: [:update]
   def index
     @cart_items = current_customer.cart_items
     total
@@ -42,5 +43,12 @@ class Public::CartItemsController < Public::BaseController
 
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def is_matching_login_user
+    cart_item = CartItem.find_by(id: params[:id])
+    if current_customer.id != cart_item.customer_id
+      redirect_to cart_items_path
+    end
   end
 end

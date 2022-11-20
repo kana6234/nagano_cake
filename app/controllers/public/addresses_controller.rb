@@ -1,4 +1,5 @@
 class Public::AddressesController < Public::BaseController
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   def index
     @address = Address.new
     @addresses = current_customer.addresses
@@ -38,5 +39,12 @@ class Public::AddressesController < Public::BaseController
 
   def address_params
     params.require(:address).permit(:postal_code, :address, :name)
+  end
+
+  def is_matching_login_user
+    address = Address.find_by(id: params[:id])
+    if current_customer.id != address.customer_id
+      redirect_to addresses_path
+    end
   end
 end
