@@ -11,16 +11,18 @@
   <div class="row">
     <% @item3.each do |item| %>
       <div class="col-3">
-        <div>
-          <%= image_tag item.get_image(200,120), class: "img-fluid" %>
-        </div>
-        <div>
-          商品名
-          <%= item.name %>
-        </div>
-        <div>
-          ¥<%= item.price.to_s(:delimited) %>
-        </div>
+        <%= link_to item_path(item.id), class: "text-dark" do %>
+          <div>
+            <%= image_tag item.get_image(200,120), class: "img-fluid" %>
+          </div>
+          <div>
+            商品名
+            <%= item.name %>
+          </div>
+          <div>
+            ¥<%= item.price.to_s(:delimited) %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
