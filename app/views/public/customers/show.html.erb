@@ -4,40 +4,44 @@
     <strong>登録情報</strong>
     <%= link_to "編集する", customers_information_edit_path, class: "btn btn-sm btn-success ml-5 px-3" %>
   </div>
-  <table class="table table-bordered border-dark">
-    <tbody>
-      <tr>
-        <td class="col-3 table-light">氏名</td>
-        <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
-      </tr>
-      <tr>
-        <td class="col-3 table-light">カナ</td>
-        <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
-      </tr>
-      <tr>
-        <td class="col-3 table-light">郵便番号</td>
-        <td><%= @customer.postal_code %></td>
-      </tr>
-      <tr>
-        <td class="col-3 table-light">住所</td>
-        <td><%= @customer.address %></td>
-      </tr>
-      <tr>
-        <td class="col-3 table-light">電話番号</td>
-        <td><%= @customer.telephone_number %></td>
-      </tr>
-      <tr>
-        <td class="col-3 table-light">メールアドレス</td>
-        <td><%= @customer.email %></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th class="col-3 th align-middle">氏名</td>
+            <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <th class="col-3 th align-middle">カナ</td>
+            <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th class="col-3 th">郵便番号</td>
+            <td class="align-middle"><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <th class="col-3 th align-middle">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <th class="col-3 th">電話番号</td>
+            <td class="align-middle"><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <th class="col-3 th">メールアドレス</td>
+            <td class="align-middle"><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <div class="mb-4">
     <strong>配送先　</strong>
-    <%= link_to "編集する", addresses_path, class: "btn btn-sm btn-primary ml-5 px-3" %>
+    <%= link_to "一覧を見る", addresses_path, class: "btn btn-sm btn-primary ml-5 px-3" %>
   </div>
   <div class="mb-4">
     <strong>注文一覧</strong>
-    <%= link_to "編集する", orders_path, class: "btn btn-sm btn-primary ml-5 px-3" %>
+    <%= link_to "一覧を見る", orders_path, class: "btn btn-sm btn-primary ml-5 px-3" %>
   </div>
 </div>
