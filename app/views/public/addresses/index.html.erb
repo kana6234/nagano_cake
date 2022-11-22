@@ -1,21 +1,25 @@
 <div class="container">
   <h5 class="d-inline-block bg-light my-4 px-3">配送先登録/一覧</h5>
-  <%= form_with model: @address, url: addresses_path do |f|%>
-    <div class="form-group row">
-      <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-sm-3 col-form-label" %>
-      <%= f.text_field :postal_code, placeholder: "0000000", class: "col-sm-4 px-0" %>
+  <div class="row">
+    <div class="col px-5 px-sm-0">
+      <%= form_with model: @address, url: addresses_path do |f|%>
+        <div class="form-group row">
+          <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-sm-3 col-form-label" %>
+          <%= f.text_field :postal_code, placeholder: "0000000", class: "col-sm-4 px-0" %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :address, "住所", class: "col-sm-3 col-form-label" %>
+          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "col-sm-7 px-0" %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :name, "宛名", class: "col-sm-3 col-form-label" %>
+          <%= f.text_field :name, placeholder: "令和道子", class: "col-sm-4 px-0" %>
+          <%= f.submit "新規登録", class: "btn btn-sm btn-success col-sm-2 offset-sm-3 mt-4 mt-sm-0" %>
+        </div>
+      <% end %>
     </div>
-    <div class="form-group row">
-      <%= f.label :address, "住所", class: "col-sm-3 col-form-label" %>
-      <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "col-sm-7 px-0" %>
-    </div>
-    <div class="form-group row">
-      <%= f.label :name, "宛名", class: "col-sm-3 col-form-label" %>
-      <%= f.text_field :name, placeholder: "令和道子", class: "col-sm-4 px-0" %>
-      <%= f.submit "新規登録", class: "btn btn-sm btn-success col-sm-2 offset-sm-3" %>
-    </div>
-  <% end %>
-  <table class="table table-bordered border-dark col-md-10">
+  </div>
+  <table class="table table-bordered border-dark col-md-10 mt-5">
     <thead class="thead-light">
       <tr>
         <th>郵便番号</th>
