@@ -6,5 +6,5 @@
     退会する場合は、「退会する」をクリックしてください。
   </p>
   <%= link_to '退会しない', customers_my_page_path, class: "btn btn-sm btn-primary mr-4 px-3" %>
-  <%= link_to '退会する', customers_withdraw_path(current_customer.id, customer: {is_deleted: true}), method: :patch, class: "btn btn-sm btn-danger px-4" %>
+  <%= link_to '退会する', customers_withdraw_path(current_customer.id, customer: {is_deleted: true}), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-sm btn-danger px-4" %>
 </div>
