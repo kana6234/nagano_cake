@@ -7,7 +7,12 @@ class Admin::OrdersController < Admin::BaseController
 
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
+    if params[:order][:status] == "confirmation_payment"
+      @order.update(order_params)
+      order_items = @order.order_items
+      order_items.update(making_status: "awaiting_production")
+      redirect_to admin_order_path(@order.id)
+    elsif @order.update(order_params)
       redirect_to admin_order_path(@order.id)
     else
       @order_items = @order.order_items.all
@@ -21,5 +26,4 @@ class Admin::OrdersController < Admin::BaseController
   def order_params
     params.require(:order).permit(:status)
   end
-
 end
