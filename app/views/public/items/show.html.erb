@@ -7,16 +7,21 @@
       <%= image_tag @item.get_image(300, 300), class: "img-fluid pr-sm-4" %>
     </div>
     <div class="col-md-6">
-          <h2><%= @item.name %></h2>
-          <p class="mb-4"><%= @item.introduction %></p>
-          <div class="row mb-2" style="padding-left:15px;">
-            <h5>¥<%= @item.with_tax_price.to_s(:delimited) %></h5><small class="pt-1">(税込)</small>
-          </div>
+      <h2><%= @item.name %></h2>
+      <p class="mb-4"><%= @item.introduction %></p>
+      <div class="row mb-2" style="padding-left:15px;">
+        <h5>¥<%= @item.with_tax_price.to_s(:delimited) %></h5><small class="pt-1">(税込)</small>
+      </div>
+      <% if @item.is_active? %>
         <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+          <%= f.hidden_field :is_active, :value => @item.is_active %>
           <%= f.hidden_field :item_id, :value => @item.id %>
           <%= f.select :amount, *[1..100], {prompt: '個数選択'} %>
           <%= f.submit 'カートに入れる', class: "btn btn-sm btn-success ml-3" %>
         <% end %>
+      <% else %>
+        <p class="text-secondary">売切れ</p>
+      <% end %>
       </div>
     </div>
   </div>
