@@ -45,6 +45,21 @@ h1{
   font-size: 100px;
 }
 
+.th{
+  font-weight: normal;
+  background-color: #e9ecef;
+}
+
+.img{
+  height: 200px;
+}
+
+@media screen and (max-width: 1024px) {
+  .img{
+    height: 100px;
+  }
+}
+
 @media screen and (max-width:425px) {
   h1{
   font-size: 50px;
@@ -54,10 +69,8 @@ h1{
   }
   .about_img{
   height: 200px;
-}
-}
-
-.th{
-  font-weight: normal;
-  background-color: #e9ecef;
+  }
+  .img{
+    height: 40px;
+  }
 }

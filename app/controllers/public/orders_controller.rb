@@ -7,7 +7,7 @@ class Public::OrdersController < Public::BaseController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = current_customer.orders.page(params[:page])
   end
 
   def create
