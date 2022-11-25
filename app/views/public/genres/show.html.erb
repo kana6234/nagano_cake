@@ -5,24 +5,7 @@
       <div class="row mt-5 mb-2" style="padding-left:15px;">
         <h3><strong><%= @genre.name %>一覧</strong></h3><span class="pt-sm-2">(全<%= @genre.items.count %>件)</span>
       </div>
-      <div class="row">
-        <% @genre.items.each do |item| %>
-          <div class="col-3">
-            <%= link_to item_path(item.id), class: "text-dark" do %>
-              <div>
-                <%= image_tag item.get_image(200,120), class: "img-fluid img" %>
-              </div>
-              <div>
-                商品名
-                <%= item.name %>
-              </div>
-              <div>
-                ¥<%= item.price.to_s(:delimited) %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <%= render "public/items/list", item: @genre.items %>
       <div class="text-center"><%= paginate @item %></div>
     </div>
   </div>

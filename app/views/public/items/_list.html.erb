@@ -1,0 +1,18 @@
+<div class="row">
+  <% item.each do |item| %>
+    <div class="col-3">
+      <%= link_to item_path(item.id), class: "text-dark" do %>
+        <div>
+          <%= image_tag item.get_image(200,120), class: "img-fluid img" %>
+        </div>
+        <div>
+          商品名
+          <%= item.name %>
+        </div>
+        <div>
+          ¥<%= item.price.to_s(:delimited) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
