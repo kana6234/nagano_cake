@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
-    <%= render "public/genres/sidebar", genres: @genres %>
+    <%= render "sidebar", genres: @genres %>
     <div class="col-sm-9">
       <div class="row mt-5 mb-2" style="padding-left:15px;">
-        <h3><strong>商品一覧</strong></h3><span class="pt-sm-2">(全<%= @items.count %>件)</span>
+        <h3><strong><%= @genre.name %>一覧</strong></h3><span class="pt-sm-2">(全<%= @genre.items.count %>件)</span>
       </div>
       <div class="row">
-        <% @item.each do |item| %>
+        <% @genre.items.each do |item| %>
           <div class="col-3">
             <%= link_to item_path(item.id), class: "text-dark" do %>
               <div>

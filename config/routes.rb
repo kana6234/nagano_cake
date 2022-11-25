@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
     resources :orders, only:[:new, :index, :create, :show]
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+    resources :genres, only:[:show]
   end
   namespace :admin do
     get 'top' => 'homes#top'

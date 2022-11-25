@@ -51,12 +51,12 @@ h1{
 }
 
 .img{
-  height: 200px;
+  height: 140px;
 }
 
 @media screen and (max-width: 1024px) {
   .img{
-    height: 100px;
+    height: 60px;
   }
 }
 
